@@ -2,6 +2,7 @@
 
 let humanScore = 0;
 let computerScore = 0;
+
 // Function to let the computer make a choice between rock, paper, or scissors
 
 function getComputerChoice() {
@@ -14,8 +15,6 @@ function getComputerChoice() {
     return "scissors";
   }
 }
-
-console.log(getComputerChoice());
 
 // Function to let user pick rock, paper, or scissors
 
@@ -40,4 +39,78 @@ function getHumanChoice() {
   }
 }
 
-console.log(getHumanChoice());
+// Function to write logic to play first round out of 5 and logging that this is Round 1 before anything
+
+console.log("Round 1:");
+
+function playRound(humanChoice, computerChoice) {
+  if (humanChoice === computerChoice) {
+    console.log("It's a tie! Both chose " + humanChoice);
+  } else if (
+    (humanChoice === "rock" && computerChoice === "scissors") ||
+    (humanChoice === "paper" && computerChoice === "rock") ||
+    (humanChoice === "scissors" && computerChoice === "paper")
+  ) {
+    humanScore++;
+    console.log("You win! " + humanChoice + " beats " + computerChoice);
+  } else {
+    computerScore++;
+    console.log("You lose! " + computerChoice + " beats " + humanChoice);
+  }
+}
+
+// Game logic: assign variables to play the game before calling the playRound function
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+// Log the computer's choice before playing the round for debugging
+
+console.log("Computer chooses: " + computerSelection);
+
+// call playRound function with human and computer selection previously assigned to getHumanChoice and getComputerChoice functions
+
+playRound(humanSelection, computerSelection);
+
+// Log the score after the round function
+
+function displayScore() {
+  console.log("Human Score: " + humanScore);
+  console.log("Computer Score: " + computerScore);
+}
+
+// Function to determine the winner of the game
+
+function displayFinalWinner() {
+  if (humanScore > computerScore) {
+    console.log("You win the game!");
+  } else if (humanScore < computerScore) {
+    console.log("You lose the game!");
+  } else {
+    console.log("It's a tie game!");
+  }
+}
+
+// Write logic to play 4 extra rounds
+
+function playGame() {
+  // loop 4 times to play 4 extra rounds, first round was already played
+  for (let i = 1; i < 5; i++) {
+    // Log the current round number
+    console.log("Round " + (i + 1) + ":");
+    // get new choices every round
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
+    // log computer's choice for debugging
+    console.log("Computer chooses: " + computerSelection);
+    // play round with new choices
+    playRound(humanSelection, computerSelection);
+    // display score after each round
+    displayScore();
+  }
+  //   after all rounds are played, display the final winner by calling the displayFinalWinner function
+  displayFinalWinner();
+}
+
+// Call the playGame function to play the game
+playGame();
