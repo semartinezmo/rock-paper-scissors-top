@@ -1,3 +1,7 @@
+// Track score of game
+
+let humanScore = 0;
+let computerScore = 0;
 // Function to let the computer make a choice between rock, paper, or scissors
 
 function getComputerChoice() {
