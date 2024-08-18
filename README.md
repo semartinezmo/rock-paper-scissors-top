@@ -1,2 +1,2 @@
 # rock-paper-scissors-top
-Game for project from the The Oding Project
+Game for project from the The Odin Project
